@@ -72,6 +72,11 @@ jobs:
     needs:
       - Docker-image
     steps:
+      - name: Download Clone-down
+        uses: actions/download-artifact@v3
+        with:
+          name: code
+          path: .
       - name: Execute component test
         run: bash ./ci/component-test.sh
   performance-test:
@@ -80,5 +85,10 @@ jobs:
     needs:
       - Docker-image
     steps:
+      - name: Download Clone-down
+        uses: actions/download-artifact@v3
+        with:
+          name: code
+          path: .
       - name: Execute performance test
         run: bash ./ci/performance-test.sh
