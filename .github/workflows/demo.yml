@@ -55,6 +55,8 @@ jobs:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Log ouput tags
+      run: echo "Tags; \n${{ steps.staging-meta.outputs.tags }} \n\nLabels; \n${{ steps.staging-meta.outputs.labels }}" 
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
